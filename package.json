@@ -9,7 +9,6 @@
     "prod:build": "cross-env NODE_ENV=\"production\" webpack-cli --config webpack.prod.ts",
     "prod:server": "http-server ./dist -a 127.0.0.1 -p 4000 -d 'false' -o",
     "dev": "run-s clean dev:*",
-    "dev:build": "cross-env NODE_ENV=\"development\" webpack-cli --config webpack.prod.ts",
     "dev:server": "cross-env NODE_ENV=\"development\" webpack-cli serve --config webpack.dev.ts",
     "clean": "node -e 'fs.rmSync(`dist`, {recursive:true, force:true})';",
     "build": "run-s clean prod:build"
