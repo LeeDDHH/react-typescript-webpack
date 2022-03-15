@@ -10,15 +10,15 @@
 
 ## 構成
 
-|                    |        |
-| :----------------: | :----: |
-|      Node.js       | 16.9.0 |
-|        npm         | 7.21.1 |
-|       React        | 17.0.2 |
-|     TypeScript     | 4.5.5  |
-|      webpack       | 5.66.0 |
-|    webpack-cli     | 4.9.1  |
-| webpack-dev-server | 4.7.3  |
+|                    |         |
+| :----------------: | :-----: |
+|      Node.js       | 16.14.0 |
+|        npm         |  8.3.1  |
+|       React        | 17.0.2  |
+|     TypeScript     |  4.6.2  |
+|      webpack       | 5.70.0  |
+|    webpack-cli     |  4.9.2  |
+| webpack-dev-server |  4.7.4  |
 
 ---
 
