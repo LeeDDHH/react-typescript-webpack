@@ -5,6 +5,9 @@
 - できるだけ `ts` ファイルで構成する
 - `dev` は `webpack` の `devServer` で立ち上げる
 - `create-react-app` ではなく、 `webpack` でビルドする
+- `public` 配下に `mock service worker` を立ち上げるためのコードを配置
+  - `webpack-dev-server` が `webpack` 以外で提供されるリソースを `public` から取得する
+  - `npx msw init public/ --save` でコードを配置できる
 
 ---
 
@@ -19,10 +22,18 @@
 |      webpack       | 5.73.0 |
 |    webpack-cli     | 4.10.0 |
 | webpack-dev-server | 4.9.2  |
+|        msw         | 0.42.1 |
 
 ---
 
 ## コマンド
+
+### プロジェクト初期化
+
+```bash
+npm install
+npx msw init public/ --save
+```
 
 ### ローカルで dev 実行
 

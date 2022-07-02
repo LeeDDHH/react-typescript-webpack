@@ -47,7 +47,7 @@ const front: Configuration = {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
   },
   output: {
-    filename: "bundle.js"
+    filename: 'bundle.js',
   },
   devServer: {
     historyApiFallback: true,
@@ -56,11 +56,13 @@ const front: Configuration = {
     open: true,
     port: 4000,
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: "src/index.html",
-    hash: true, // This is useful for cache busting
-    filename: 'index.html'
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      hash: true, // This is useful for cache busting
+      filename: 'index.html',
+    }),
+  ],
 };
 
 export default front;
