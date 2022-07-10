@@ -27,14 +27,70 @@ const base: Configuration = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)?$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: 2,
+              workerParallelJobs: 80,
+              workerNodeArgs: ['--max-old-space-size=512'],
+              name: 'ts-loader-pool',
+            },
+          },
+          {
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'ts',
+              minify: isDev,
+              target: 'es2015',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.tsx$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'thread-loader',
+            options: {
+              workers: 2,
+              workerParallelJobs: 80,
+              workerNodeArgs: ['--max-old-space-size=512'],
+              name: 'tsx-loader-pool',
+            },
+          },
+          {
+            loader: 'esbuild-loader',
+            options: {
+              // loaderはstring型なのでtsとtsxファイルの設定を別々に定義する必要がある
+              loader: 'tsx',
+              minify: isDev,
+              target: 'es2015',
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: 'thread-loader',
+            options: {
+              // worker thread数
+              workers: 2,
+              // 並列処理の上限数
+              workerParallelJobs: 40,
+              // キャッシュのmaxサイズ
+              workerNodeArgs: ['--max-old-space-size=512'],
+              // thread pool名（固有）
+              name: 'css-loader-pool',
+            },
+          },
+          { loader: MiniCssExtractPlugin.loader },
           {
             loader: 'css-loader',
             options: { sourceMap: isDev },

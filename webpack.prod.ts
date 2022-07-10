@@ -5,6 +5,7 @@ import { Configuration } from 'webpack';
 import base from './webpack.common';
 
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const front: Configuration = {
@@ -17,6 +18,7 @@ const front: Configuration = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: true,
